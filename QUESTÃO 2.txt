@@ -1,0 +1,17 @@
+select u.* from Usuario u 
+where not exists(select * from Telefone where id_usuario=u.id)
+
+select u.nome as Caminhoneiro from Usuario u inner join Cargo c on u.id_cargo = c.id 
+                                             inner join Telefone t on t.id_usuario = u.id
+                              where t.ddd=21; -- Rio de Janeiro
+
+select c.nome from Cargo c 
+              
+where (select count(*) qtde from Usuario u 
+                                          where c.id = u.id_cargo) > 2
+order by c.nome desc
+
+
+
+
+
